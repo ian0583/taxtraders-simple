@@ -22,6 +22,12 @@ switch ($type)
 		break;
 	case 'allsum':
 		$total = ($number * ($number + 1))/2;
+
+		// for ($i = 0; $i <= $number; $i++)
+		// {
+		// 	$total += $i;
+		// }
+
 		break;
 }
 
