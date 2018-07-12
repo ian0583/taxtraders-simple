@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Tax Traders</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+</head>
+<body>
+
+	<div class="container-fluid">
+
+		<form class="form-inline">
+			<div class="form-group mb-2">
+				<label for="numberInput" class="sr-only">Email</label>
+				<input type="number" class="form-control" id="numberInput" placeholder="0">
+			</div>
+			<input type="button" class="btn btn-primary mb-2" id="oddsum" value="Odd Sum">
+			<input type="button" class="btn btn-primary mb-2" id="evensum" value="Even Sum">
+			<input type="button" class="btn btn-primary mb-2" id="allsum" value="Summation">
+		</form>
+
+	</div>
+
+	<script>
+		$(function(){
+			$('.btn').click(function(){
+				var number = $('#numberInput')[0].value;
+				if (isNaN(number))
+				{
+					alert ("Input must be a number");
+					return false;
+				}
+
+				$.ajax({
+					url: "post.php",
+					data: {
+						value: number,
+						type: this.id
+					},
+					type: "POST",
+					dataType : "json",
+				})
+				.done(function( json ) {
+					console.log(json)
+					$( "<h1>" ).text( json.title ).appendTo( "body" );
+					$( "<div class=\"content\">").html( json.html ).appendTo( "body" );
+					alert( "The answer is " + json.toString() );
+				})
+				.fail(function( xhr, status, errorThrown ) {
+					alert( "Sorry, there was a problem!" );
+					console.log( "Error: " + errorThrown );
+					console.log( "Status: " + status );
+					console.dir( xhr );
+				})
+			});
+		});
+	</script>
+</body>
+</html>
