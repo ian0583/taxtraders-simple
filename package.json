@@ -1,0 +1,15 @@
+{
+  "name": "taxtraders-simple",
+  "version": "1.0.0",
+  "description": "Tax Traders simple application",
+  "main": "index.html",
+  "dependencies": {
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bjorn Christian Basar",
+  "license": "MIT"
+}
